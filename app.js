@@ -1,15 +1,20 @@
-//console.log(process.argv);
+/* jshint esnext: true */
 
-function grab(flag) {
-  var index = process.argv.indexOf(flag);
-  return (index === -1) ? null : process.argv[index+1];
-}
+var http = require("http");
 
-var greeting = grab('--greeting');
-var user = grab('--user');
+http.createServer(function(req, res) {
 
-if (!user || !greeting) {
-  console.log("You Blew it!");
-} else {
-  console.log(`Welcome ${user}, ${greeting}`);
-}
+   res.writeHead(200, {"Content-Type": "text/html"});
+   res.end(`<!DOCTYPE html>
+     <html>
+       <head>
+         <title>Web Server</title>
+       </head>
+       <body>
+         <h1>Hello World how are you doing?</h1>
+     </html> 
+   `);
+
+}).listen(3000);
+
+console.log("Server running http://localhost:3000");

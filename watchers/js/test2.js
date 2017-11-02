@@ -1,0 +1,1 @@
+alert("File js/test2 included");
